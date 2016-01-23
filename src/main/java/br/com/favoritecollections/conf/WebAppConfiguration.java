@@ -2,6 +2,7 @@ package br.com.favoritecollections.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -10,10 +11,9 @@ import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 import org.springframework.web.servlet.view.velocity.VelocityView;
 import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
 
-import br.com.favoritecollections.controllers.HomeController;
-
+@Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class})
+@ComponentScan(basePackages = {"br.com.favoritecollections"})
 public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
