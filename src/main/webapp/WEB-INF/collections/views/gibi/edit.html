@@ -1,0 +1,15 @@
+<div ng-controller="gibiController">
+	<form name="gibiForm">
+		<div layout-gt-sm="row">
+	        <md-input-container class="md-block" flet-gt-sm>
+	          <label>Edition</label>
+	          <input ng-model="gibi.editions[0].numberEdition">
+	        </md-input-container class="md-block" flet-gt-sm>
+	        <md-input-container flex>
+	          <label>Published</label>
+	          <input ng-model="gibi.published">
+	        </md-input-container>	        
+	      </div>
+	     <md-button class="" data-ng-click="update(gibi)">Update</md-button>
+      </form>
+</div>

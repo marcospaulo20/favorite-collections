@@ -2,7 +2,7 @@ define(['resources/app/scripts/routes',
         'resources/app/scripts/services/dependencyResolverFor'],
         
     function(config, dependencyResolverFor) {
-		var app = angular.module('app', ['ngRoute', 'ngResource', 'ngMaterial']);
+		var app = angular.module('app', ['ngRoute', 'ngResource', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 		
 		app.config(
 		[

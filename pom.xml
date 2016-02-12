@@ -37,6 +37,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
+		
 		<!-- Fim Library Spring -->
 
 		<dependency>
@@ -116,7 +117,14 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.30</version>
 		</dependency>
-
+		
+		<!-- Postgres -->
+		<dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1200-jdbc41</version>
+        </dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

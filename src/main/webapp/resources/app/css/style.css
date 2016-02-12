@@ -1,0 +1,14 @@
+.rimless .md-button {
+	padding: 0px;
+}
+
+ .md-button > img{
+	width: 7.3em;
+	height: 11em;
+}
+
+/*
+	image : 100x154
+	width: 7.3em; --> 102px
+    height: 11em; --> 154px
+*/

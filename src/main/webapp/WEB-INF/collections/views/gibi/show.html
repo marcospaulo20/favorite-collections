@@ -1,0 +1,37 @@
+<div ng-controller="gibiController">
+	<h3>{{gibi.name}}</h3>
+	
+	<md-content>
+		<md-list-item class="md-3-line" >
+  			<div class="md-list-item-text" layout="column">
+  				<h3>{{ gibi.id }}</h3>
+  				<h4>{{ gibi.name }}</h4>
+  				<h4>{{ gibi.published }}</h4>
+  				<h4>{{ gibi.publishingCompany }}</h4>
+  				<h4>{{ gibi.licensor }}</h4>
+  				<h4>{{ gibi.genre }}</h4>
+  				<h4>{{ gibi.statusGibi }}</h4>
+  				<h4>{{ gibi.dateRegister | date:'medium' }}</h4>
+  			</div>		  				
+		</md-list-item>
+		<br/>
+			Editions
+		<md-list-item class="md-3-line" ng-repeat="edition in gibi.editions">						
+			<div class="md-list-item-text" layout="column">
+				<h4>{{edition.id}} {{edition.coverPrice}} {{edition.dateRegister | date}}</h4>
+				<div>
+					<md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex="100" flex-gt-md="auto">
+	      				Custom Dialog
+	    			</md-button>
+    			</div>
+			</div>
+		</md-list-item>
+		<md-button ng-href="#/gibi/{{gibi.id}}/editions">
+			Editions
+		</md-button>
+		 <md-button data-ng-click="remove(gibi)">
+		  					Remove
+		  				</md-button>
+	</md-content>
+	
+</div>

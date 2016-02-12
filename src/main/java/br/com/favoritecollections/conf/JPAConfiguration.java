@@ -29,7 +29,12 @@ public class JPAConfiguration {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "br.com.favoritecollections.model" });
+		sessionFactory.setPackagesToScan(new String[] 
+		{ 
+			"br.com.favoritecollections.gibi.model",
+			"br.com.favoritecollections.model",
+			"br.com.favoritecollections.user.model"
+		});
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
@@ -68,5 +73,4 @@ public class JPAConfiguration {
 		txManager.setSessionFactory(s);
 		return txManager;
 	}
-
 }

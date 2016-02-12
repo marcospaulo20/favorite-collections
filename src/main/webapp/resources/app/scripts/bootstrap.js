@@ -9,14 +9,16 @@ require.config({
 		'angular-aria': 'resources/app/lib/angular-aria/angular-aria.min',
 		'angular-material': 'resources/app/lib/angular-material/js/angular-material.min',
 		'angular-resource': 'resources/app/lib/angular-resource/angular-resource.min',
-		
+		'angular-messages': 'resources/app/lib/angular-messages/angular-messages.min',
+		'angular-material-icons': 'resources/app/lib/angular-material-icons-master/angular-material-icons.min',
 	},
 	shim: {
 		'angular' : {
 			deps: ['jquery']
 		},
 		'app': {
-			deps: ['angular', 'angular-route', 'angular-resource', 'angular-animate', 'angular-aria', 'angular-material',]
+			deps: ['angular', 'angular-route', 'angular-resource', 'angular-animate', 'angular-aria', 
+			       	'angular-material', 'angular-messages', 'angular-material-icons']
 		},
 		'angular-route': {
 			deps: ['angular']
@@ -31,6 +33,12 @@ require.config({
 			deps: ['angular']
 		},
 		'angular-material' : {
+			deps: ['angular']
+		},
+		'angular-messages' : {
+			deps: ['angular']			
+		},
+		'angular-material-icons' : {
 			deps: ['angular']
 		}
 	}
