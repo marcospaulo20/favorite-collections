@@ -11,6 +11,7 @@ require.config({
 		'angular-resource': 'resources/app/lib/angular-resource/angular-resource.min',
 		'angular-messages': 'resources/app/lib/angular-messages/angular-messages.min',
 		'angular-material-icons': 'resources/app/lib/angular-material-icons-master/angular-material-icons.min',
+		'md-data-table-master': 'resources/app/lib/md-data-table-master/md-data-table.min',
 	},
 	shim: {
 		'angular' : {
@@ -18,7 +19,7 @@ require.config({
 		},
 		'app': {
 			deps: ['angular', 'angular-route', 'angular-resource', 'angular-animate', 'angular-aria', 
-			       	'angular-material', 'angular-messages', 'angular-material-icons']
+			       	'angular-material', 'angular-messages', 'angular-material-icons', 'md-data-table-master']
 		},
 		'angular-route': {
 			deps: ['angular']
@@ -39,6 +40,9 @@ require.config({
 			deps: ['angular']			
 		},
 		'angular-material-icons' : {
+			deps: ['angular']
+		},
+		'md-data-table-master' : {
 			deps: ['angular']
 		}
 	}

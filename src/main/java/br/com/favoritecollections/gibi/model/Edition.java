@@ -1,6 +1,7 @@
 package br.com.favoritecollections.gibi.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,41 +10,53 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import br.com.favoritecollections.model.Image;
 
 @Entity
-@Table(name = "edition")
+@Table(name = "tbgib_edition")
 public class Edition {
 
-	@Id	@GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 	
-	@OneToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "edition_image_id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "image_id")
 	private Image image;
-	@Column(name = "number_edition", length = 6, nullable = false)
-	private int numberEdition;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "edition_chapter",
+			joinColumns = {@JoinColumn(name="edition_id", referencedColumnName="id")},
+			inverseJoinColumns={@JoinColumn(name="chapter_id", referencedColumnName="id")})
+	private List<Chapter> chapters;
+
+	@Column(name = "art", length = 255)
+	private String art;
+	@Column(name = "editor", length = 255)
+	private String editor;
+	@Column(name = "number_page", nullable = false)
+	private int numberPage;
 	@Column(name = "comic_book_format")
 	private String comicBookFormat;
 	@Column(name = "cover_price", nullable = false)
 	private float coverPrice;
-	@Column(name = "date_register", nullable = false)
-	private Date dateRegister;
-	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name = "edition_gibi_id")
-	@JsonBackReference
-	private Gibi gibi;
+	@Column(name = "japan_release")
+	private Date japanRelease;
+	@Column(name = "brasil_release")
+	private Date brasilRelease;
+	@Lob
+	@Column(name = "summary")
+	private byte[] summary;
 
 	public Edition() {	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -60,12 +73,36 @@ public class Edition {
 		this.image = image;
 	}
 
-	public int getNumberEdition() {
-		return numberEdition;
+	public List<Chapter> getChapters() {
+		return chapters;
 	}
 
-	public void setNumberEdition(int numberEdition) {
-		this.numberEdition = numberEdition;
+	public void setChapters(List<Chapter> chapters) {
+		this.chapters = chapters;
+	}
+
+	public String getArt() {
+		return art;
+	}
+
+	public void setArt(String art) {
+		this.art = art;
+	}
+
+	public String getEditor() {
+		return editor;
+	}
+
+	public void setEditor(String editor) {
+		this.editor = editor;
+	}
+
+	public int getNumberPage() {
+		return numberPage;
+	}
+
+	public void setNumberPage(int numberPage) {
+		this.numberPage = numberPage;
 	}
 
 	public String getComicBookFormat() {
@@ -84,42 +121,28 @@ public class Edition {
 		this.coverPrice = coverPrice;
 	}
 
-	public Date getDateRegister() {
-		return dateRegister;
+	public Date getJapanRelease() {
+		return japanRelease;
 	}
 
-	public void setDateRegister(Date dateRegister) {
-		this.dateRegister = dateRegister;
+	public void setJapanRelease(Date japanRelease) {
+		this.japanRelease = japanRelease;
 	}
 
-	public Gibi getGibi() {
-		return gibi;
+	public Date getBrasilRelease() {
+		return brasilRelease;
 	}
 
-	public void setGibi(Gibi gibi) {
-		this.gibi = gibi;
+	public void setBrasilRelease(Date brasilRelease) {
+		this.brasilRelease = brasilRelease;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
+	public byte[] getSummary() {
+		return summary;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Edition other = (Edition) obj;
-		if (id != other.id)
-			return false;
-		return true;
+	public void setSummary(byte[] summary) {
+		this.summary = summary;
 	}
 	
 }

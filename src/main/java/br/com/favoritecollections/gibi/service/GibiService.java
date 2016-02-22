@@ -5,4 +5,5 @@ import br.com.favoritecollections.service.GenericService;
 
 public interface GibiService extends GenericService<Gibi, Integer> {
 
+	public Gibi getGibi(Integer id);
 }

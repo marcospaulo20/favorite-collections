@@ -2,9 +2,20 @@
 	padding: 0px;
 }
 
- .md-button > img{
+ .md-button > img {
 	width: 7.3em;
 	height: 11em;
+}
+
+.flags > img {
+	padding: 0px;
+	width: 22px; 
+	height: 15px;
+	display: initial;
+}
+
+.flags > a {	
+	display: initial;
 }
 
 /*
@@ -12,3 +23,20 @@
 	width: 7.3em; --> 102px
     height: 11em; --> 154px
 */
+
+table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+}
+
+table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+table th, table td {
+    padding: 6px 13px;
+}

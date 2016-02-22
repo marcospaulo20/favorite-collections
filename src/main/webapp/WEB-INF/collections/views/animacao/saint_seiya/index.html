@@ -1,0 +1,93 @@
+<div ng-controller="saintSeiyaController" layout="column" style="height:500px;">	
+	
+	<div layout="row">
+  		<div flex-gt-sm="88" flex="44">
+    		<div layout-gt-sm="row" layout="column" layout-margin layout-align="start center" layout-align-gt-sm="start start">
+      			<main flex-md="60" flex-order-gt-sm="2">
+        			<h1 class="md-title">
+            			<i>Os Cavaleiros do Zodíaco</i>
+        			</h1>
+        			<p>
+          				<b>Saint Seiya</b>, conhecido nos países lusófonos como Os <b>Cavaleiros do Zodíaco</b>,
+          				 é uma série japonesa de mangá, escrita e ilustrada por Masami Kurumada, publicada
+          				 na revista Weekly Shonen Jump de 1986 a 1991 e adaptada para anime pela Toei Animation de 1986 a 1989.
+        			</p>
+        			<p>
+        			A história mostra guerreiros místicos chamados de "Cavaleiros" (ou "Saints" no original) que lutam vestindo "Armaduras" (ou "Cloths") sagradas baseadas nas diversas constelações do zodíaco que protegem cada um dos guerreiros. Os Cavaleiros têm como missão defender a reencarnação da deusa grega Athena em sua batalha contra outros deuses do Olimpo ou de outras mitologias que pretendem dominar a Terra.
+        			</p>
+      			</main>      			
+  			</div>
+  		</div>
+  		
+  		<div flex-gt-sm="44" flex="88">
+  			<md-table-container>  		
+	  			<table md-table>
+	  				<thead md-head>
+	  					<tr md-row>
+	  						<th md-column colspan="2"><h5 class="md-title">{{gibi.product.name}}</h5></th>
+	  					</tr>
+	  					<tr md-row>
+			    			<th md-column colspan="2">
+			    				<img src="{{gibi.imageGibi.url}}">
+			    			</th>
+			    		</tr>
+	    			</thead>
+	    			<tbody md-body>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Gênero:</b></td>
+	    					<td md-cell>
+	    						<any ng-repeat="genre in gibi.genres">
+					  				{{ genre.name }}, 
+								</any>
+							</td>
+	    				</tr>
+	    				<tr md-row>
+	  						<th md-column colspan="2" style="background-color:#DEDEE2;"><b class="md-title">Mangá</b></th>
+	  					</tr>
+	  					<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Autor:</b></td>
+	    					<td md-cell>{{ gibi.written }}</td>
+	    				</tr>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Editora(s):</b></td>
+	    					<td md-cell style="background-color: #F5F5F5">
+	    						<div class="flags">
+	    							<img src="resources/images/flags/jap.png"/>
+	    							{{ gibi.licensor }}
+	    						</div>	    						
+	    					</td>
+	    				</tr>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Editora(s):</b><br/><b>lusófonas(s):</b></td>
+	    					<td md-cell style="background-color: #F5F5F5">
+    							<div ng-repeat="publishingCompany in gibi.publishingCompanys" class="flags">
+	    							<img src="resources/images/flags/br.png"/>	    								    							
+	    							<md-button ng-href="#/saint-seiya/{{publishingCompany.id}}">
+	    								{{ publishingCompany.name }} - {{ publishingCompany.editions.length }}
+	    							</md-button>	
+    							</div>    											
+	    					</td>
+	    				</tr>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Revista:</b></td>
+	    					<td md-cell style="background-color: #F5F5F5">
+    							{{ gibi.magazine }}
+	    					</td>
+	    				</tr>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Data de Publicação:</b></td>
+	    					<td md-cell style="background-color: #F5F5F5">
+    							{{ gibi.publishedInitial | date : 'yyyy'}} - {{ gibi.publishedFinal | date : 'yyyy'}} 
+	    					</td>
+	    				</tr>
+	    				<tr md-row>
+	    					<td md-cell style="background-color:#DEDEE2;"><b>Volumes:</b></td>
+	    					<td md-cell style="background-color: #F5F5F5">
+    							28 (Lista de Volumes)
+	    					</td>
+	    				</tr>	    				
+	    			</tbody>
+	    		</table>
+    		</md-table-container>
+		</div>				
+</div>

@@ -14,15 +14,11 @@ public class Image {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 100, nullable = false)
 	private String name;
-	@Column(name = "url", nullable = false)
+	@Column(name = "url", length = 255, nullable = false)
 	private String url;
-	@Column(name = "description")
-	private String description;
-	@Column(name = "type", nullable = false)
-	private String type;
-
+	
 	public Image() {	}
 
 	public int getId() {
@@ -36,7 +32,7 @@ public class Image {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -44,21 +40,5 @@ public class Image {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	
 }

@@ -1,0 +1,7 @@
+<div ng-controller="saintSeiyaEditionController" class="sample" layout="column">
+  <h1 class="md-display-1">{{edition.art}}</h1> 
+  <div ng-repeat="chapter in edition.chapters">
+  	{{chapter.nameBow}}
+  </div>
+  <img src="{{edition.image.url}}">
+</div>  

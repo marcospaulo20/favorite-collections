@@ -1,8 +1,7 @@
 package br.com.favoritecollections.gibi.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,69 +9,105 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import br.com.favoritecollections.model.Genre;
+import br.com.favoritecollections.model.Image;
+import br.com.favoritecollections.model.Product;
+import br.com.favoritecollections.model.Status;
 
 @Entity
-@Table(name = "gibi")
+@Table(name = "tbgib_gibi")
 public class Gibi {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name_gibi", nullable = false)
-	private String name;
-	@Temporal(TemporalType.DATE)
-	@Column(name = "published", nullable = false)
-	private Date published;
-	@Column(name = "publishing_company", nullable = false)
-	private String publishingCompany;	
-	@Column(name = "licensor")
+	@OneToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
+
+	@OneToOne
+	@JoinColumn(name = "status_id")
+	private Status status;
+	
+	@OneToOne
+	@JoinColumn(name = "image_id")
+	private Image imageGibi;
+
+	@Column(name = "written", length = 100, nullable = false)
+	private String written;
+	@Column(name = "magazine", length = 100)
+	private String magazine;
+	@Column(name = "licensor", length = 100)
 	private String licensor;
-	@Column(name = "genre", nullable = false)
-	private String genre;
-	@Column(name = "status_gibi", nullable = false)
-	private String statusGibi;
-	@Column(name = "date_register", nullable = false)
-	private Date dateRegister;
+	@Column(name = "published_initial", nullable = false)
+	private Date publishedInitial;
+	@Column(name = "published_final")
+	private Date publishedFinal;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "gibi_publishing_company",
+			joinColumns = {@JoinColumn(name="gibi_id", referencedColumnName="id")},
+			inverseJoinColumns={@JoinColumn(name="publishing_company_id", referencedColumnName="id")})
+	private List<PublishingCompany> publishingCompanys;
 	
-	@OneToMany(mappedBy = "gibi", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonManagedReference
-	private Set<Edition> editions = new HashSet<Edition>();
-	
-	public Gibi() {  }
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "gibi_genre",
+			joinColumns = {@JoinColumn(name="gibi_id", referencedColumnName="id")},
+			inverseJoinColumns={@JoinColumn(name="genre_id", referencedColumnName="id")})
+	private List<Genre> genres;
+
+	public Gibi() {	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public Date getPublished() {
-		return published;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setPublished(Date published) {
-		this.published = published;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
-	public String getPublishingCompany() {
-		return publishingCompany;
+	public Image getImageGibi() {
+		return imageGibi;
 	}
 
-	public void setPublishingCompany(String publishingCompany) {
-		this.publishingCompany = publishingCompany;
+	public void setImageGibi(Image imageGibi) {
+		this.imageGibi = imageGibi;
+	}
+
+	public String getWritten() {
+		return written;
+	}
+
+	public void setWritten(String written) {
+		this.written = written;
+	}
+
+	public String getMagazine() {
+		return magazine;
+	}
+
+	public void setMagazine(String magazine) {
+		this.magazine = magazine;
 	}
 
 	public String getLicensor() {
@@ -83,36 +118,38 @@ public class Gibi {
 		this.licensor = licensor;
 	}
 
-	public String getGenre() {
-		return genre;
+	public Date getPublishedInitial() {
+		return publishedInitial;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setPublishedInitial(Date publishedInitial) {
+		this.publishedInitial = publishedInitial;
 	}
 
-	public String getStatusGibi() {
-		return statusGibi;
+	public Date getPublishedFinal() {
+		return publishedFinal;
 	}
 
-	public void setStatusGibi(String statusGibi) {
-		this.statusGibi = statusGibi;
+	public void setPublishedFinal(Date publishedFinal) {
+		this.publishedFinal = publishedFinal;
 	}
 
-	public Date getDateRegister() {
-		return dateRegister;
+	public List<PublishingCompany> getPublishingCompanys() {
+		return publishingCompanys;
 	}
 
-	public void setDateRegister(Date dateRegister) {
-		this.dateRegister = dateRegister;
+	public void setPublishingCompanys(List<PublishingCompany> publishingCompanys) {
+		this.publishingCompanys = publishingCompanys;
 	}
 
-	public Set<Edition> getEditions() {
-		return editions;
+	public List<Genre> getGenres() {
+		return genres;
 	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
 	
-	public void setEditions(Set<Edition> editions) {
-		this.editions = editions;
-	}
 	
 }

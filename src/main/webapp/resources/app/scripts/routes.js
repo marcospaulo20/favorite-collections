@@ -2,14 +2,26 @@ define([], function()
 {
 	return {
 		defaultRoutePath: '/collections',
-		routes: {
-			'/menu': {
-				templateUrl: 'menus/list',
-				controller: 'menusController',
-				dependencies: [
-				    'resources/app/scripts/controllers/menu/MenuController'
-				]
+		routes: {			
+			// Animation
+			// Saint Seiya - Anime & Gibi
+			'/saint-seiya' : {
+				templateUrl : 'saint_seiya/index',
+				controller: 'saintSeiyaController',
+				dependencies: [ 'resources/app/scripts/controllers/animation/saint_seiya/SaintSeiyaController' ]
 			},
+			'/saint-seiya/:id' : {
+				templateUrl : 'saint_seiya/gibi/publishingCompany',
+				controller: 'saintSeiyaPublishingCompanyController',
+				dependencies: [ 'resources/app/scripts/controllers/animation/saint_seiya/SaintSeiyaController' ]
+			},
+			'/saint-seiya/:id/:id_' : {
+				templateUrl : 'saint_seiya/gibi/edition',
+				controller: 'saintSeiyaEditionController',
+				dependencies: [ 'resources/app/scripts/controllers/animation/saint_seiya/SaintSeiyaController' ]
+			},
+			
+			
 			'/gibi' : {
 				templateUrl : 'gibis/list',
 				controller: 'gibisController',

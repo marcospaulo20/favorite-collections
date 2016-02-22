@@ -8,7 +8,6 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -59,7 +58,7 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 	}
 
 	@Override
-	public E find(K key) {
+	public E find(K key) {		
 		return (E) currentSession().get(clazz, key);
 	}
 

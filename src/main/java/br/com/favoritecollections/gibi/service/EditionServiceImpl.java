@@ -1,7 +1,5 @@
 package br.com.favoritecollections.gibi.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,22 +12,23 @@ import br.com.favoritecollections.gibi.model.Edition;
 import br.com.favoritecollections.service.GenericServiceImpl;
 
 @Service
-public class EditionServiceImpl extends GenericServiceImpl<Edition, Integer> implements EditionService {
+public class EditionServiceImpl extends GenericServiceImpl<Edition, Integer> 
+	implements EditionService {
 
 	private EditionDao editionDao;
-
-	public EditionServiceImpl() {
-	}
-
+	
+	public EditionServiceImpl() {	}
+	
 	@Autowired
-	public EditionServiceImpl(@Qualifier("editionDaoImpl") GenericDao<Edition, Integer> genericDao) {
+	public EditionServiceImpl(
+			@Qualifier("editionDaoImpl") GenericDao<Edition, Integer> genericDao) {
 		super(genericDao);
 		this.editionDao = (EditionDao) genericDao;
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public List<Edition> findByGibiUsername(String name) {
-		return editionDao.findByGibiUsername(name);
+	public Edition getEdition(Integer id) {
+		return editionDao.getEdition(id);
 	}
 }

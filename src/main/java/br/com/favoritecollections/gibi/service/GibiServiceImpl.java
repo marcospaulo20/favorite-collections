@@ -3,6 +3,8 @@ package br.com.favoritecollections.gibi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.favoritecollections.dao.GenericDao;
 import br.com.favoritecollections.gibi.dao.GibiDao;
@@ -22,6 +24,12 @@ public class GibiServiceImpl extends GenericServiceImpl<Gibi, Integer>
 			@Qualifier("gibiDaoImpl") GenericDao<Gibi, Integer> genericDao) {
 		super(genericDao);
 		this.gibiDao = (GibiDao) genericDao;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public Gibi getGibi(Integer id) {
+		return gibiDao.getGibi(id);
 	}
 	
 }

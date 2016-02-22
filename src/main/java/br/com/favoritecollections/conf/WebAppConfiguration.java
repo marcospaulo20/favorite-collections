@@ -20,7 +20,7 @@ import com.google.common.cache.CacheBuilder;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.favoritecollections", "br.com.favoritecollections.gibi.controller"})
+@ComponentScan({"br.com.favoritecollections", "br.com.favoritecollections.animations.controller"})
 @EnableCaching
 public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 	
