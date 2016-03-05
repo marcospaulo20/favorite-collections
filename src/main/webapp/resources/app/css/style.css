@@ -24,6 +24,124 @@
     height: 11em; --> 154px
 */
 
+.site-sidenav, .site-sidenav.md-locked-open-add-active, .site-sidenav.md-locked-open {
+    width: 272px;
+    min-width: 272px;
+    max-width: 272px;
+}
+
+.site-content-toolbar {
+    background: #f6f6f6 !important;
+    color: #202020 !important;
+    z-index: 3;
+}
+
+.md-whiteframe-glow-z1 {
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+}
+
+.docs-logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 16px;
+    margin: 0 auto;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(64, 84, 178, 0.25);
+    -webkit-transition: border-bottom 0.35s;
+    -moz-transition: border-bottom 0.35s;
+    -ms-transition: border-bottom 0.35s;
+    -o-transition: border-bottom 0.35s;
+    transition: border-bottom 0.35s;
+}
+
+.site-sidenav md-content {
+    background: transparent;
+}
+
+.site-sidenav > * {
+    min-width: 218px;
+}
+
+.docs-menu li.parentActive, .docs-menu li.parentActive .menu-toggle-list {
+    background-color: #3B4146 !important;
+}
+
+a.docs-logo {
+    border-bottom: none;
+}
+
+/* a > li*/
+.docs-menu li {
+    margin: 0;
+}
+
+ul li {
+    margin-left: 16px;
+    padding: 0;
+    margin-top: 3px;
+    list-style-position: inside;
+}
+
+.docs-menu, .docs-menu ul {
+    list-style: none;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+menu ul {
+    list-style: none;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.menu-toggle-list {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    -webkit-transition-property: height;
+    -moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    -moz-transition-property: height;
+    transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    transition-property: height;
+}
+
+/** buttons*/
+.docs-menu .md-button {
+    border-radius: 0;
+    color: white;
+    cursor: pointer;
+    display: block;
+    align-items: inherit;
+    line-height: 40px;
+    margin: 0;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    width: 100%;
+}
+
+a.md-button {
+    border-bottom: none;
+}
+
 table {
     display: block;
     width: 100%;
@@ -39,4 +157,8 @@ table tr {
 
 table th, table td {
     padding: 6px 13px;
+}
+
+th img {
+	 width: 350px;
 }

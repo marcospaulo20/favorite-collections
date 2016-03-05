@@ -7,7 +7,7 @@ require.config({
 		'jquery': 'resources/app/lib/jquery/jquery.min',
 		'angular-animate': 'resources/app/lib/angular-animate/angular-animate.min',
 		'angular-aria': 'resources/app/lib/angular-aria/angular-aria.min',
-		'angular-material': 'resources/app/lib/angular-material/js/angular-material.min',
+		'angular-material': 'resources/app/lib/angular-material/js/angular-material.min',		
 		'angular-resource': 'resources/app/lib/angular-resource/angular-resource.min',
 		'angular-messages': 'resources/app/lib/angular-messages/angular-messages.min',
 		'angular-material-icons': 'resources/app/lib/angular-material-icons-master/angular-material-icons.min',
@@ -20,7 +20,7 @@ require.config({
 		'app': {
 			deps: ['angular', 'angular-route', 'angular-resource', 'angular-animate', 'angular-aria', 
 			       	'angular-material', 'angular-messages', 'angular-material-icons', 'md-data-table-master']
-		},
+		},		
 		'angular-route': {
 			deps: ['angular']
 		},

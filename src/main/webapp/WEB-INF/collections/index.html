@@ -6,39 +6,61 @@
     <link rel="stylesheet" href="resources/app/lib/angular-material/css/angular-material.min.css" >
     <link rel="stylesheet" href="resources/app/lib/angular-material/css/angular-material.layouts.min.css" >
     <link rel="stylesheet" href="resources/app/lib/angular-material-icons-master/angular-material-icons.css" >
-    <link rel="stylesheet" href="resources/app/lib/md-data-table-master/md-data-table.min.css" >
+    <link rel="stylesheet" href="resources/app/lib/md-data-table-master/md-data-table.min.css" >    
     
     <link rel="stylesheet" href="resources/app/css/style.css" >
+    <link rel="stylesheet" href="resources/app/css/style_.css" >
     <title ng-bind="$root.title"></title> 	
 </head>
 
-	<body layout="column">
-		<md-toolbar layout="row">
-			<div class="md-toolbar-tools">
-				<md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-	        		<ng-md-icon aria-label="Menu" icon="menu" />
-	      		</md-button>
-	      		<h1>Favorite Collections: &nbsp;{{title}}</h1>
-	    	</div>
-		</md-toolbar>
-		<div layout="row" flex>
-	    	<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-4dp" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-	    		<span class="md-layout-title md-title">&copy; Collections</span>
-	    		<md-divider></md-divider>
-	      		<md-button class="md-navigation md-title" ng-href="#/saint-seiya">Saint Seiya</md-button>
-	    	</md-sidenav>    	
-	    	<div layout="column" flex id="content">
-	    		<ui-view layout="column" layout-fill="" layout-padding="">
-		    		<md-card class="md-default-theme">
-			      		<md-content layout="column">
-			       			<div ng-view></div>
-			      		</md-content>
-			      	</md-card>
-		      	</ui-view>
-	    	</div>
-	  	</div>
+	<body layout="row" class="layout-row">
+	    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+	    	<header class="nav-header">
+		      <a ng-href="/" class="docs-logo" href="#">
+		        <!-- <img src="" alt="">  -->
+		        <h1 class="md-display-5">&copy; Collections</h1>
+		      </a>
+		    </header>
+	    	<md-divider></md-divider>	    	    		    	
+	    	<md-content flex="" role="navigation" class="flex">
+		    	<ul class="docs-menu">
+			    	<li class="parent-list-item parentActive" ng-class="{'parentActive' : isSectionSelected(section)}" style="">
+		    			<ul id="docs-menu-Demos" class="menu-toggle-list" style="height: 1320px;">
+							<a class="md-button md-ink-ripple" ng-class="{'active' : isSelected()}" ng-href="#/saint-seiya" ng-click="focusSection()" href="demo/autocomplete" aria-label="Autocomplete">
+								<span class="ng-binding ng-scope">
+									Saint Seiya
+								</span>
+							</a>
+							<a class="md-button md-ink-ripple" ng-class="{'active' : isSelected()}" ng-href="#/saint-seiya" ng-click="focusSection()" href="demo/autocomplete" aria-label="Autocomplete">
+								<span class="ng-binding ng-scope">
+									Saint Seiya
+								</span><!-- ngIf: isSelected() -->
+							</a>
+		    			</ul>
+			    	</li>
+		    	</ul>
+		    	
+	    	</md-content>
+    	</md-sidenav>  	    	  
+	    
+	    <div layout="column" flex id="content">
+	    	<md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar">
+				<div class="md-toolbar-tools docs-toolbar-tools">
+					<md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+	        			<ng-md-icon aria-label="Menu" icon="menu" />
+	      			</md-button>
+	      			<h1>{{title}}</h1>
+	    		</div>
+			</md-toolbar>	
+			<md-content layout="column" flex>    	
+	    		<div ng-view="" layout-padding="" flex="noshrink">
+	    			<md-card class="md-default-theme">
+	    				<div ng-view></div>
+	    			</md-card>
+	    		</div>	    		
+			</md-content>
+	    </div>	    
 		<script type="text/javascript" data-main="resources/app/scripts/bootstrap.js" src="resources/app/lib/requirejs/require.js"></script>
-			
 	</body>
 
 </html>

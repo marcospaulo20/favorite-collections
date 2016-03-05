@@ -2,7 +2,7 @@ define(['resources/app/scripts/routes',
         'resources/app/scripts/services/dependencyResolverFor'],
         
     function(config, dependencyResolverFor) {
-		var app = angular.module('app', ['ngRoute', 'ngResource', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'md.data.table']);
+		var app = angular.module('app', ['ngRoute', 'ngResource', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'md.data.table', 'ngMenuSidenav']);
 		
 		app.config(
 		[
@@ -34,12 +34,38 @@ define(['resources/app/scripts/routes',
 		 	}
 		]);
 		
-		app.run(function($mdSidenav, $rootScope, $location) {
-	    	$rootScope.title = 'HOME';
+		app.directive("menuToggle", ['$timeout' ,function($timeout) {
+		    return {
+		        scope: {
+		        	section: '='
+		        },
+		        link: function(scope, element) {
+		        	var controller = element.parent().controller();
+		        	
+		        	scope.isOpen = function() {
+		        		return controller.isOpen(scope.section);
+		        	};
+		        	scope.toggle = function () {
+		        		controller.toggleOpen(scope.section);
+		        	};
+		             
+		        	var parentNode = element[0].parentNode.parentNode.parentNode;
+		        	if (parentNode.classList.contains('parent-list-item')) {
+		                var heading = parentNode.querySelector('h2');
+		                element[0].firstChild.setAttribute('aria-describedby', heading.id);
+		        	}
+		        }
+		    };
+		}]);			
+		
+		app.run(['', function($mdSidenav, $rootScope) {			
+			 
+			$rootScope.title = 'HOME';
+	    	$rootScope.index = 0;
 	    	$rootScope.toggleSidenav = function(menuId) {
 	    		$mdSidenav(menuId).toggle();
-	    	};
-	    });
+	    	};	    		    
+	    }]);
 		
 		return app;
 });
